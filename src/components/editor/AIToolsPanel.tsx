@@ -76,7 +76,7 @@ function ContentWriterTool({ micrositeId }: { micrositeId: string }) {
     setLoading(true);
     try {
       let endpoint = '';
-      let body: any = { tone };
+      const body: any = { tone };
 
       switch (contentType) {
         case 'bio':

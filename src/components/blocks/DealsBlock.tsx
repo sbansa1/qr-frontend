@@ -3,7 +3,7 @@ import type { PageTheme } from '@/types/theme';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Clock, Percent, Tag, Flame, Zap, Gift, Copy, Check,
-  ArrowRight, Star, Sparkles, AlertCircle, Timer, Ticket, ShoppingCart
+  ArrowRight, AlertCircle, Timer, Ticket, ShoppingCart
 } from 'lucide-react';
 import { useState, useEffect, memo } from 'react';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
@@ -14,12 +14,8 @@ import {
   shadows, 
   borders, 
   animations, 
-  colors,
   getCardStyles,
-  getTextColor,
-  getPrimaryShadow,
-  staggerContainer,
-  staggerItem
+  getPrimaryShadow
 } from '../../utils/designSystem';
 
 interface DealsBlockProps {
@@ -58,7 +54,22 @@ function isDarkBackground(theme?: PageTheme): boolean {
 
 // Countdown hook
 function useCountdown(targetDate: string | undefined) {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, expired: false });
+  const [timeLeft, setTimeLeft] = useState(() => {
+    if (!targetDate) return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: false };
+    
+    const difference = new Date(targetDate).getTime() - Date.now();
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+    }
+    
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+      expired: false,
+    };
+  });
   
   useEffect(() => {
     if (!targetDate) return;
@@ -78,7 +89,6 @@ function useCountdown(targetDate: string | undefined) {
       };
     };
     
-    setTimeLeft(calculateTimeLeft());
     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
     return () => clearInterval(timer);
   }, [targetDate]);

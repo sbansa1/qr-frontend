@@ -3,28 +3,18 @@ import type { PageTheme } from '@/types/theme';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Play, Pause, SkipBack, SkipForward, Volume2, VolumeX,
-  Music, Disc3, Heart, Share2, ExternalLink, Download,
-  Headphones, Mic2, Album, Clock, MoreHorizontal,
-  Shuffle, Repeat, ListMusic, ChevronLeft, ChevronRight,
-  ShoppingCart, Check
+  Music, Disc3, Heart, ExternalLink,
+  Headphones, ChevronLeft, ChevronRight, Shuffle
 } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { 
   spacing, 
-  typography, 
-  shadows, 
   borders, 
   animations, 
-  colors,
-  getCardStyles,
-  getTextColor,
-  getPrimaryShadow,
-  staggerContainer,
-  staggerItem
+  getCardStyles
 } from '../../utils/designSystem';
 import { usePayment } from '@/contexts/PaymentContext';
-import { formatCurrency } from '@/lib/payment-utils';
 import { useAuthStore } from '@/store/authStore';
 
 interface ArtistBlockProps {
@@ -88,8 +78,6 @@ export default function ArtistBlock({ block, theme, micrositeId }: ArtistBlockPr
   const tracks = (block.content.tracks as Track[]) || [];
   const artworks = (block.content.artworks as ArtworkItem[]) || [];
   const artistName = (block.content.artistName as string) || 'Artist Name';
-  const artistImage = (block.content.artistImage as string) || '';
-  const bio = (block.content.bio as string) || '';
   const genre = (block.content.genre as string) || '';
   
   // Default sample data
@@ -157,21 +145,17 @@ export default function ArtistBlock({ block, theme, micrositeId }: ArtistBlockPr
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [likedTracks, setLikedTracks] = useState<Set<number>>(new Set());
-  const [activeTab, setActiveTab] = useState<'tracks' | 'artwork'>('tracks');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [hoveredTrack, setHoveredTrack] = useState<number | null>(null);
 
   // Configuration
   const style = (block.content.style as 'spotify' | 'vinyl' | 'minimal' | 'gallery' | 'compact') || 'spotify';
   const showPlays = (block.content.showPlays as boolean) ?? true;
-  const enablePreview = (block.content.enablePreview as boolean) ?? true;
 
   // Theme integration
   const primaryColor = theme?.branding?.primaryColor || theme?.button?.backgroundColor || '#1DB954'; // Spotify green default
   const titleFont = theme?.typography?.titleFont || 'inter';
-  const bodyFont = theme?.typography?.bodyFont || 'inter';
   const titleFontFamily = FONT_FAMILY_MAP[titleFont] || "'Inter', sans-serif";
-  const bodyFontFamily = FONT_FAMILY_MAP[bodyFont] || "'Inter', sans-serif";
   
   const isDark = isDarkBackground(theme);
   // Enhanced contrast for better readability
