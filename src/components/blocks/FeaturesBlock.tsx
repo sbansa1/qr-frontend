@@ -4,7 +4,7 @@ import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Check, ArrowRight, Sparkles, Star, Zap, Shield, Rocket, Heart, Gift, Crown, Target, Gem, Award } from 'lucide-react';
-import { spacing, typography, shadows, borders, animations } from '@/utils/designSystem';
+import { spacing, shadows, animations } from '@/utils/designSystem';
 
 interface FeaturesBlockProps {
   block: Block;

@@ -3,9 +3,8 @@ import type { PageTheme } from '@/types/theme';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Leaf, Flame, Star, Clock, 
-  Sparkles, Heart, Plus, Minus, ShoppingCart,
-  UtensilsCrossed, Coffee, Wine, Salad, Cake, Pizza,
-  X, Trash2, Lock, Package, CreditCard, Loader2
+  Sparkles, Heart, Plus, Minus,
+  UtensilsCrossed, Coffee, Wine, Salad, Cake, Pizza
 } from 'lucide-react';
 import { useState } from 'react';
 import { 
@@ -14,16 +13,11 @@ import {
   shadows, 
   borders, 
   animations, 
-  colors,
   getCardStyles,
-  getTextColor,
-  getPrimaryShadow,
-  staggerContainer,
-  staggerItem
+  getPrimaryShadow
 } from '../../utils/designSystem';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { usePayment } from '@/contexts/PaymentContext';
-import { formatCurrency } from '@/lib/payment-utils';
 
 interface MenuBlockProps {
   block: Block;
@@ -135,10 +129,7 @@ export default function MenuBlock({ block, theme }: MenuBlockProps) {
   const { 
     addToCart: addToPaymentCart, 
     cart: paymentCart, 
-    updateQuantity, 
-    removeFromCart,
-    cartCount,
-    cartTotal 
+    updateQuantity
   } = usePayment();
 
   // Configuration

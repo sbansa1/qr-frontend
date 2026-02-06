@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { spacing, shadows, animations, borders } from '@/utils/designSystem';
+import { shadows, animations, borders } from '@/utils/designSystem';
 
 interface HeaderBlockProps {
   block: Block;

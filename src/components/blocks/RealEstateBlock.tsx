@@ -1,26 +1,18 @@
 import type { Block } from '@/types';
 import type { PageTheme } from '@/types/theme';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Home, MapPin, Bed, Bath, Square, Car, Heart, Share2, 
   Phone, Mail, ChevronLeft, ChevronRight, 
   Building2, Trees, Landmark, Store, CheckCircle2, Clock, 
-  XCircle, Sparkles, Star, Maximize2, ExternalLink, type LucideIcon
+  XCircle, Star, Maximize2, ExternalLink
 } from 'lucide-react';
 import { useState } from 'react';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { 
-  spacing, 
-  typography, 
-  shadows, 
   borders, 
   animations, 
-  colors,
-  getCardStyles,
-  getTextColor,
-  getPrimaryShadow,
-  staggerContainer,
-  staggerItem
+  getCardStyles
 } from '../../utils/designSystem';
 
 interface RealEstateBlockProps {
@@ -121,9 +113,7 @@ export default function RealEstateBlock({ block, theme }: RealEstateBlockProps) 
   // Theme integration
   const primaryColor = theme?.branding?.primaryColor || theme?.button?.backgroundColor || '#6366f1';
   const titleFont = theme?.typography?.titleFont || 'inter';
-  const bodyFont = theme?.typography?.bodyFont || 'inter';
   const titleFontFamily = FONT_FAMILY_MAP[titleFont] || "'Inter', sans-serif";
-  const bodyFontFamily = FONT_FAMILY_MAP[bodyFont] || "'Inter', sans-serif";
   
   const isDark = isDarkBackground(theme);
   // Enhanced contrast for much better readability

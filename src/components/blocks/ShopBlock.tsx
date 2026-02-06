@@ -31,17 +31,10 @@ import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { integrationsApi } from '@/lib/api/integrations';
 import { 
-  spacing, 
-  typography, 
-  shadows, 
   borders, 
   animations, 
-  colors,
   getCardStyles,
-  getTextColor,
-  getPrimaryShadow,
-  staggerContainer,
-  staggerItem
+  getPrimaryShadow
 } from '../../utils/designSystem';
 
 interface ShopBlockProps {

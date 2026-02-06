@@ -1,17 +1,14 @@
 import type { Block } from '@/types';
 import type { PageTheme } from '@/types/theme';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Quote, Star, ChevronLeft, ChevronRight, Sparkles, Heart, MessageCircle } from 'lucide-react';
+import { Quote, Star, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { 
   spacing, 
-  typography, 
-  shadows, 
   borders, 
   animations, 
-  getCardStyles, 
-  getPrimaryShadow 
+  getCardStyles
 } from '@/utils/designSystem';
 
 interface TestimonialBlockProps {

@@ -25,11 +25,9 @@ import type { PageTheme } from '@/types/theme';
 import { FONT_FAMILY_MAP } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { 
-  spacing, 
   borders, 
   animations, 
-  getCardStyles, 
-  getPrimaryShadow 
+  getCardStyles
 } from '@/utils/designSystem';
 
 interface EventsBlockProps {
