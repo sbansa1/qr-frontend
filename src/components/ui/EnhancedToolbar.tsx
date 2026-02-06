@@ -287,7 +287,6 @@ export function DeviceSelector({
   onChange 
 }: DeviceSelectorProps) {
   const selectedDevice = devices[selectedIndex];
-  const Icon = deviceIcons[selectedDevice.icon];
 
   return (
     <div className="flex items-center gap-3">
