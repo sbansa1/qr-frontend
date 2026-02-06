@@ -216,6 +216,7 @@ export function PageSettings({ theme, onChange }: PageSettingsProps) {
                     onClick={() => {
                       const defaultPreset = THEME_PRESETS[0];
                       if (defaultPreset) {
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onChange(defaultPreset as any);
                       }
                     }}

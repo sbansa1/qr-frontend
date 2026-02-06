@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * BlockInspector - Clean, intuitive block editor
  * 

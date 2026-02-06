@@ -38,9 +38,6 @@ import { nanoid } from 'nanoid';
 import { micrositeApi } from '@/lib/api';
 import { useAuthStore } from '@/store/authStore';
 import { useLocation } from 'react-router-dom';
-import { useKeyboardNavigation } from '@/hooks/useKeyboardNavigation';
-import { useAnnouncer } from '@/hooks/useAnnouncer';
-import { useFocusManagement } from '@/hooks/useFocusManagement';
 
 interface EditorLayoutProps {
   micrositeId: string; // ID of the microsite being edited
@@ -230,6 +227,7 @@ export default function EditorLayout({ micrositeId }: EditorLayoutProps) {
       }
       
       const loadedBlocks = data.layout || [];
+      const blockTypes = loadedBlocks.map((b: Block) => b.type);
       console.log('✅ Microsite loaded:', {
         id: data.id,
         title: data.title,
